@@ -20,3 +20,6 @@ grub:
 
 clean:
 	rm *.bin
+
+qemu:
+	qemu-system-x86_64 -cdrom paraboxos.iso
