@@ -1,4 +1,4 @@
-BITS 32
+; --------- ;
 
 MAGIC     equ 0xe85250d6
 ARCH      equ 0
@@ -16,6 +16,7 @@ mlt_start:
 	dd 8
 mlt_end:
 ;----------------------------;
+BITS 32
 
 global start ; start entry
 extern kmain ; kernel entry
@@ -29,11 +30,17 @@ sysloop:
 	hlt
 	jmp sysloop
 end:
+	jmp $
+
+section .rodata
+GTD_start:
+
+GDT_end:
 
 global stack_top
 
 section .bss
-heap_base:
+stack_bottom:
 resb 8192
 stack_top:
 ;============================;
